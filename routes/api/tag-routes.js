@@ -11,6 +11,13 @@ router.get('/', (req, res) => {
       'id',
       'tag_name', 
     ], 
+    include: {
+      model: Product,
+      attributes: [ 'id',
+      'product_name', 
+      'price', 
+      'stock']
+    } 
    })
    .then(dbTagData => res.json(dbTagData))
    .catch(err=>{
@@ -30,6 +37,13 @@ router.get('/:id', (req, res) => {
       'id',
       'tag_name', 
      ], 
+     include: {
+      model: Product,
+      attributes: [ 'id',
+      'product_name', 
+      'price', 
+      'stock']
+    } 
    })
    .then(dbTagData => res.json(dbTagData))
    .catch(err=>{

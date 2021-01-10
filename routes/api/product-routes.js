@@ -14,6 +14,16 @@ router.get('/', (req, res) => {
      'price', 
      'stock'
    ], 
+   include: [
+    {
+      model: Category,
+      attributes: ['id', 'category_name'],
+    },
+    {
+      model: Tag,
+      attributes: ['id', 'tag_name']
+    }
+  ],
   })
   .then(dbProductData => res.json(dbProductData))
   .catch(err=>{
@@ -35,6 +45,16 @@ router.get('/:id', (req, res) => {
       'price', 
       'stock'
     ], 
+    include: [
+      {
+        model: Category,
+        attributes: ['id', 'category_name'],
+      },
+      {
+        model: Tag,
+        attributes: ['id', 'tag_name']
+      }
+    ],
    })
    .then(dbProductData => res.json(dbProductData))
    .catch(err=>{
